@@ -13,6 +13,6 @@ export default async (model, data) => {
     });
     return true;
   } catch (err) {
-    return false;
+    return err;
   }
 };

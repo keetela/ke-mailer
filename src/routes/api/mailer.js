@@ -1,15 +1,10 @@
 import { Router } from 'express';
 import MailerController from '../../controllers/MailerController';
 import asyncHandler from '../../middlewares/asyncHandler';
-// import { validate } from '../../middlewares';
+import validateMail from '../../middlewares/validateMail';
 
-const articles = Router();
+const mailer = Router();
 
-// create article
-articles.post(
-  '/',
-  // validate.mail,
-  asyncHandler(MailerController.send)
-);
+mailer.post('/', validateMail, asyncHandler(MailerController.send));
 
-export default articles;
+export default mailer;

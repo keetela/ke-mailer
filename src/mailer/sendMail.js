@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import mailer from '@sendgrid/mail';
-import db from '../models';
 
 dotenv.config();
 
@@ -10,10 +9,13 @@ export default async (data) => {
   mailer.setApiKey(SENDGRID_API_KEY);
 
   const emailData = {
-    to: `From: ${data.names} <${data.receiver}>`,
-    from: data.sender,
+    to: data.receiver,
     subject: data.subject,
     name: data.names,
+    from: {
+      email: data.sender,
+      name: data.service_name
+    },
     text: data.text || '',
     html: `<div style="width:100%;padding:30px 0;background:#f7f7f7;font-family:'Open Sans', sans-serif;font-weight:300">
     <!-- BODY -->
@@ -32,18 +34,8 @@ export default async (data) => {
 
   try {
     await mailer.send(emailData);
-    const content = {
-      receiver: data.receiver,
-      sender: data.sender,
-      receiver_name: data.names,
-      messages: data.message,
-      subject: data.subject,
-      service_id: data.service_id,
-      text: data.text
-    };
-    await db.Mail.create(content, { logging: false });
     return true;
   } catch (error) {
-   return false;
+    return error;
   }
 };
