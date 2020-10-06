@@ -4,16 +4,17 @@ dotenv.config();
 
 const config = {
   development: {
-    use_env_variable: 'DATABASE_URL_DEV',
+    url: process.env.DATABASE_URL_DEV,
     username: process.env.DB_USER_DEV,
     password: process.env.DB_PASSWORD_DEV,
     database: process.env.DB_NAME_DEV,
-    host: process.env.DB_HOST_DEV,
+    host: process.env.DB_HOST_DEV || "localhost",
     dialect: 'postgres',
-    seederStorage: 'sequelize'
+    operatorsAliases: false,
+    logging: true,
   },
   test: {
-    use_env_variable: 'DATABASE_URL_TEST',
+    use_env_variable: process.env.DATABASE_URL_TEST,
     username: process.env.DB_USER_TEST,
     password: process.env.DB_PASSWORD_TEST,
     database: process.env.DB_NAME_TEST,
@@ -22,7 +23,7 @@ const config = {
     seederStorage: 'sequelize'
   },
   production: {
-    use_env_variable: 'DATABASE_URL',
+    use_env_variable: process.env.DATABASE_URL_PROD,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,

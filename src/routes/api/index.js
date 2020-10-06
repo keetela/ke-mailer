@@ -3,6 +3,6 @@ import mailer from './mailer';
 
 const router = express.Router();
 
-router.use('/mailer', mailer);
+router.use('/mail', mailer);
 
 export default router;
