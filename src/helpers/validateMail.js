@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from '@hapi/joi';
 
 export default (input) => {
   const schema = Joi.object().keys({
@@ -29,7 +29,7 @@ export default (input) => {
       .max(45)
       .required(),
     service_id: Joi.string()
-      .regex(/^[0-9]{8}$/)
+      // .regex(/^[0-9]{8}$/)
       .required(),
     text: Joi.string()
       .min(2)
