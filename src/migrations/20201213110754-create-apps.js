@@ -10,6 +10,8 @@ module.exports = {
       key: {
         type: Sequelize.UUID,
         allowNull: false,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true,
       },
       status: {
         type: Sequelize.BOOLEAN,

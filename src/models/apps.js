@@ -8,7 +8,9 @@ export default (sequelize, DataTypes) => {
     },
     key: {
       type: DataTypes.UUID,
+      primaryKey: true,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4
     },
     status: {
       type: DataTypes.BOOLEAN,
