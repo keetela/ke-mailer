@@ -7,10 +7,6 @@ export default (input) => {
       .max(45)
       .email()
       .required(),
-    status: Joi.string()
-      .min(4)
-      .max(5)
-      .required(),
     name: Joi.string()
       .min(2)
       .max(50)

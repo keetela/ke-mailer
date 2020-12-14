@@ -43,5 +43,3 @@ export const fetchApps = async (req, res) => {
     Apps: apps,
   });
 };
-
-// export default (createApp, fetchApps);/

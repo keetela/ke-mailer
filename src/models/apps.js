@@ -22,7 +22,8 @@ export default (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     logo: {
       type: DataTypes.STRING,

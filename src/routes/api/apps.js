@@ -5,7 +5,7 @@ import validateApp from '../../middlewares/validateApps';
 
 const Apps = Router();
 
-Apps.get('/apps', validateApp, asyncHandler(fetchApps));
+Apps.get('/', asyncHandler(fetchApps));
 Apps.post('/', validateApp, asyncHandler(createApp));
 
 export default Apps;

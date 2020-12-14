@@ -11,7 +11,6 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
       },
       status: {
         type: Sequelize.BOOLEAN,
@@ -23,7 +22,8 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       logo: {
         type: Sequelize.STRING,
