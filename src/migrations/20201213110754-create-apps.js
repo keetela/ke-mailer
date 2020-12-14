@@ -1,38 +1,30 @@
-export default {
+module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Mails', {
+    await queryInterface.createTable('Apps', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
-      receiver: {
+      key: {
+        type: Sequelize.UUID,
+        allowNull: false,
+      },
+      status: {
+        type: Sequelize.BOOLEAN,
+        default: true,
+      },
+      senderEmail: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      sender: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      subject: {
+      logo: {
         type: Sequelize.STRING,
-        allowNull: false
-      },
-      text: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      receiver_name: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      messages: {
-        type: Sequelize.TEXT,
-        allowNull: false
-      },
-      service_id: {
-        type: Sequelize.TEXT,
         allowNull: false
       },
       createdAt: {
@@ -46,6 +38,6 @@ export default {
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Mails');
+    await queryInterface.dropTable('Apps');
   }
 };
