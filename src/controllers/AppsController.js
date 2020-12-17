@@ -53,14 +53,15 @@ export const fetchApps = async (req, res) => {
 
 export const updateApps = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { appkey } = req.params;
+    console.log(appkey);
     const existingApp = await Apps.findOne({
-      where: { id },
+      where: { key: appkey },
     });
 
     if (!existingApp) {
-      return res.status(200).json({
-        status: 200,
+      return res.status(404).json({
+        status: 404,
         message: 'The App does not exist in the system',
       });
     }
@@ -72,11 +73,11 @@ export const updateApps = async (req, res) => {
       name, senderEmail, logo,
     },
     {
-      where: { id: req.params.id }
+      where: { key: req.params.key }
     });
 
     if (updateApp) {
-      const updatedApp = await Apps.findOne({ where: { id: req.params.id } });
+      const updatedApp = await Apps.findOne({ where: { key: req.params.key } });
       return res.status(200).json({
         status: 200,
         message: 'App updated successfully',
@@ -97,7 +98,6 @@ export const updateApps = async (req, res) => {
 export const deleteApp = async (req, res) => {
   try {
     const { id } = req.params;
-
     const existingApp = await Apps.findOne({
       where: { id },
     });

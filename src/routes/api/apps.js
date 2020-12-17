@@ -9,7 +9,7 @@ const Apps = Router();
 
 Apps.get('/', asyncHandler(fetchApps));
 Apps.post('/', validateApp, asyncHandler(createApp));
-Apps.patch('/', validateApp, asyncHandler(updateApps));
-Apps.delete('/', validateApp, asyncHandler(deleteApp));
+Apps.patch('/:appKey', validateApp, asyncHandler(updateApps));
+Apps.delete('/', asyncHandler(deleteApp));
 
 export default Apps;
