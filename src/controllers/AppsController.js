@@ -29,7 +29,11 @@ export const createApp = async (req, res) => {
 
 export const fetchApps = async (req, res) => {
   try {
-    const apps = await Apps.findAll();
+    const apps = await Apps.findAll({
+      where: {
+        status: true
+      }
+    });
 
     if (apps.length < 1) {
       return res.status(403).json({
@@ -106,9 +110,10 @@ export const deleteApp = async (req, res) => {
         message: 'App does not exist in the system'
       });
     }
-    const deleteById = await Apps.destroy({
-      where: { id },
-    });
+    const deleteById = await Apps.update({ status: false },
+      {
+        where: { id },
+      });
 
     if (deleteById) {
       return res.status(200).json({
