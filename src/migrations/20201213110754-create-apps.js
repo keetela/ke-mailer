@@ -14,7 +14,7 @@ module.exports = {
       },
       status: {
         type: Sequelize.BOOLEAN,
-        default: true,
+        defaultValue: true,
       },
       senderEmail: {
         type: Sequelize.STRING,

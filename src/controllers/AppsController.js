@@ -53,10 +53,9 @@ export const fetchApps = async (req, res) => {
 
 export const updateApps = async (req, res) => {
   try {
-    const { appkey } = req.params;
-    console.log(appkey);
+    const { id } = req.params;
     const existingApp = await Apps.findOne({
-      where: { key: appkey },
+      where: { id },
     });
 
     if (!existingApp) {

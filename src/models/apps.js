@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
     },
     status: {
       type: DataTypes.BOOLEAN,
-      default: true,
+      defaultValue: true,
     },
     senderEmail: {
       type: DataTypes.STRING,
