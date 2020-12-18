@@ -72,11 +72,11 @@ export const updateApps = async (req, res) => {
       name, senderEmail, logo,
     },
     {
-      where: { key: req.params.key }
+      where: { id: req.params.id }
     });
 
     if (updateApp) {
-      const updatedApp = await Apps.findOne({ where: { key: req.params.key } });
+      const updatedApp = await Apps.findOne({ where: { id: req.params.id } });
       return res.status(200).json({
         status: 200,
         message: 'App updated successfully',
