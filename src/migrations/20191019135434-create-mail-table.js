@@ -1,6 +1,6 @@
 export default {
-  up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Mails', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Mails', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -43,6 +43,9 @@ export default {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }),
-  down: queryInterface => queryInterface.dropTable('Mails')
+    });
+  },
+  down: async (queryInterface) => {
+    await queryInterface.dropTable('Mails');
+  }
 };

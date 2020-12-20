@@ -28,13 +28,13 @@ export default class MailerController {
       return res.status(status.CREATED).json({
         status: status.CREATED,
         sent: true,
-        message: 'Email has been send'
+        message: 'Email has been sent'
       });
     }
     return res.status(status.BAD_REQUEST).json({
       status: status.BAD_REQUEST,
       sent: false,
-      message: "Something wrong happened, email notification wasn't send"
+      message: "Something wrong happened, email notification wasn't sent"
     });
   }
 }
